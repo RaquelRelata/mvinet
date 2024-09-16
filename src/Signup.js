@@ -100,7 +100,7 @@ function SignupForm() {
                 </div>
             </nav>
 
-    <div className="container mt-5" style={{ backgroundColor: '#0194CF', padding: '40px', borderRadius: '10px' }}>
+    <div className="container mt-5" style={{ backgroundColor: '#0194CF', padding: '30px', borderRadius: '8px' ,maxWidth: '600px'}}>
       <h2 className="text-center mb-4 text-white">Signup Form</h2>
       <form onSubmit={handleSubmit} className="text-white">
         {/* User Type Selection */}
@@ -366,11 +366,11 @@ function SignupForm() {
           </div>
         )}
 
-        {/* Submit Button */}
-        <div className="button-group">
+<div className="button-group" style={{ marginTop: '20px' }}>
   <button type="submit" className="btn btn-light btn-block">Submit</button>
   <button type="button" className="btn btn-secondary btn-block" onClick={handleCancel}>Cancel</button>
 </div>
+
 
 
 
