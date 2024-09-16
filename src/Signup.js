@@ -36,6 +36,11 @@ function SignupForm() {
         navigate('/');
     };
 
+  const handleSignInClick = () => {
+  navigate("/", { state: { fromSignUp: true } }); // Pass state to indicate the sign-in modal should be shown
+};
+
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.firstName) newErrors.firstName = 'First Name is required';
@@ -88,20 +93,14 @@ function SignupForm() {
                                 <a className="nav-link" href="/events">Events</a>
                             </li>
                         </ul>
-                        <ul className="navbar-nav">
-                            <li className="nav-item me-2">
-                                <a className="btn btn-primary" href="/signin">Signin</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="btn btn-primary" href="/signup">Sign Up</a>
-                            </li>
-                        </ul>
+                       
                     </div>
                 </div>
             </nav>
 
     <div className="container mt-5" style={{ backgroundColor: '#0194CF', padding: '30px', borderRadius: '8px' ,maxWidth: '600px'}}>
-      <h2 className="text-center mb-4 text-white">Signup Form</h2>
+      <h2 className="text-center mb-4 text-white">Sign Up</h2>
+      <p className='text-center text-white'>It's quick and easy</p>
       <form onSubmit={handleSubmit} className="text-white">
         {/* User Type Selection */}
         <div className="form-group">
@@ -117,33 +116,34 @@ function SignupForm() {
           </select>
         </div>
 
-        {/* First Name */}
+      
         <div className="form-group">
-          <label>First Name</label>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text icon-large">
-                <FaUser />
-              </span>
-            </div>
-            <input
-  type="text"
-  className="form-control "
-  name="firstName"
-  placeholder="First Name"
-  value={formData.firstName}
-  onChange={handleInputChange}
-/>
+  <label>First Name</label>
+  <div className="input-group">
+    <div className="input-group-prepend d-flex align-items-center">
+      <span className="input-group-text icon-large">
+        <FaUser />
+      </span>
+    </div>
+    <input
+      type="text"
+      className="form-control"
+      name="firstName"
+      placeholder="First Name"
+      value={formData.firstName}
+      onChange={handleInputChange}
+    />
+  
 
           </div>
           {errors.firstName && <p className="text-danger">{errors.firstName}</p>}
         </div>
 
-        {/* Middle Name */}
+        
         <div className="form-group">
           <label>Middle Name</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaUser />
               </span>
@@ -159,11 +159,11 @@ function SignupForm() {
           </div>
         </div>
 
-        {/* Last Name */}
+        
         <div className="form-group">
           <label>Last Name</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaUser />
               </span>
@@ -180,7 +180,7 @@ function SignupForm() {
           {errors.lastName && <p className="text-danger">{errors.lastName}</p>}
         </div>
 
-        {/* Gender */}
+      
         <div className="form-group">
           <label>Gender</label>
           <select
@@ -195,11 +195,11 @@ function SignupForm() {
           </select>
         </div>
 
-        {/* Email */}
+       
         <div className="form-group">
           <label>Email</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaEnvelope />
               </span>
@@ -220,7 +220,7 @@ function SignupForm() {
         <div className="form-group">
           <label>Phone Number</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaPhone />
               </span>
@@ -237,11 +237,11 @@ function SignupForm() {
           {errors.phoneNumber && <p className="text-danger">{errors.phoneNumber}</p>}
         </div>
 
-        {/* Region */}
+        
         <div className="form-group">
           <label>Region</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaMapMarkedAlt />
               </span>
@@ -258,11 +258,11 @@ function SignupForm() {
           {errors.region && <p className="text-danger">{errors.region}</p>}
         </div>
 
-        {/* City */}
+        
         <div className="form-group">
           <label>City</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaCity />
               </span>
@@ -283,7 +283,7 @@ function SignupForm() {
         <div className="form-group">
           <label>Password</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaLock />
               </span>
@@ -304,7 +304,7 @@ function SignupForm() {
         <div className="form-group">
           <label>Confirm Password</label>
           <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend d-flex align-items-center">
               <span className="input-group-text icon-large">
                 <FaLock />
               </span>
@@ -321,12 +321,11 @@ function SignupForm() {
           {errors.confirmPassword && <p className="text-danger">{errors.confirmPassword}</p>}
         </div>
 
-        {/* Conditional File Upload */}
         {formData.userType === 'investors' && (
           <div className="form-group">
             <label>Upload Valid ID:</label>
             <div className="input-group">
-              <div className="input-group-prepend">
+              <div className="input-group-prepend d-flex align-items-center">
                 <span className="input-group-text">
                   <FaIdCard />
                 </span>
@@ -346,7 +345,7 @@ function SignupForm() {
           <div className="form-group">
             <label>Upload Proposal:</label>
             <div className="input-group">
-              <div className="input-group-prepend">
+              <div className="input-group-prepend d-flex align-items-center">
                 <span className="input-group-text">
                   <FaFileUpload />
                 </span>
@@ -370,6 +369,16 @@ function SignupForm() {
   <button type="submit" className="btn btn-light btn-block">Submit</button>
   <button type="button" className="btn btn-secondary btn-block" onClick={handleCancel}>Cancel</button>
 </div>
+ 
+<div className="text-center mt-3">
+        <p>Already have an account? 
+        <span role="link" tabIndex={0} onClick={handleSignInClick} style={{ color: 'yellow', textDecoration: 'underline', cursor: 'pointer' }}>
+  Sign In
+</span>
+
+           
+        </p>
+      </div>
 
 
 

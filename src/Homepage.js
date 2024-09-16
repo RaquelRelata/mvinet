@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './mvinet-logo.png';
 import img1 from './img1.jpg';
 import img2 from './img22.jpeg';
 import img3 from './img33.jpg';
 import './homepage.css';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [showSignInModal, setShowSignInModal] = useState(false);
+    const location = useLocation();
 
+    useEffect(() => {
+        if (location.state?.fromSignUp) {
+          setShowSignInModal(true);
+        }
+      }, [location]);
   const handleShowSignIn = () => setShowSignInModal(true);
   const handleCloseSignIn = () => setShowSignInModal(false);
 
