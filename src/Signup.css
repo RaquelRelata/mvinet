@@ -1,0 +1,12 @@
+.small-input {
+  width: 300px; /* Adjust the width */
+  height: 30px; /* Adjust the height, if necessary */
+}
+.icon-large {
+  font-size: 1.3rem; /* Adjust the size as needed */
+}
+.button-group {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons */
+}
+
